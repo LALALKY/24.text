@@ -102,15 +102,20 @@ get24(int i,int j,int k,int t)
 int main()
 {
 	char e;
+	 
 	float a,b,c,d;
     int n[4];
     int i;
-loop:    printf("请依次输入抽到的牌\n(A为1，J为11，Q为12，K为13)\n");
+loop:
+
+//	printf("\ne的值是%c\n",e);
+    printf("请依次输入抽到的牌\n(A为1，J为11，Q为12，K为13)\n");
     for(i=0;i<4;i++)
     {
 	    scanf("%d",&n[i]);
+//	    printf("\n第%d个数判断结果为%d",i-1,(n[i]<=0||n[i]>13));
 //	    printf("n%d为%d",i,n[i]);
-	    while (n[i]<=0&&n[i]>13)
+	    while (n[i]<=0||n[i]>13)
 	    {
 		    printf("请输入正确的牌\n");
 		    scanf("%d",&n[i]);
@@ -119,7 +124,8 @@ loop:    printf("请依次输入抽到的牌\n(A为1，J为11，Q为12，K为13)\n");
     a=n[0];b=n[1];c=n[2];d=n[3];
 //    printf("%d",n[1]);
     get24(a,b,c,d);
-    printf("请问您是否继续计算(是输入y，否输入任意字母)");
+    getchar();                  //用于取出在缓冲区里上个scanf留下的“\n” 
+   	printf("请问您是否在此次后继续计算(是输入y，否输入任意字母)");
 	scanf("%c",&e);
 	if(e=='y')
 	goto loop;
